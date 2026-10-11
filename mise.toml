@@ -1,0 +1,34 @@
+[tools]
+# Swift toolchain is provided by Xcode; nothing extra to pin here.
+
+[tasks.fmt]
+description = "Format Swift sources with swift-format"
+run = "xcrun swift-format format --in-place --recursive Sources Tests"
+
+[tasks.lint]
+description = "Lint Swift sources with swift-format"
+run = "xcrun swift-format lint --recursive Sources Tests"
+
+[tasks.test]
+description = "Run Swift unit tests"
+run = "swift test"
+
+[tasks.check]
+description = "Build (debug)"
+run = "swift build"
+
+[tasks.build]
+description = "Release build"
+run = "swift build -c release"
+
+[tasks.bundle]
+description = "Build and assemble CopyLens.app"
+run = "./Scripts/bundle.sh"
+
+[tasks.run]
+description = "Bundle and launch CopyLens.app"
+run = "./Scripts/bundle.sh && open build/release/CopyLens.app"
+
+[tasks.dmg]
+description = "Create distributable DMG"
+run = "./Scripts/create-dmg.sh"
